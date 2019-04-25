@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
          var resultNews: ArrayList<News> = ArrayList()
     }
     private val API_KEY = "b34f14127ae348478d1d9b1eb7292375"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

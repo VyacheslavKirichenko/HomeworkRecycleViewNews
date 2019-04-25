@@ -10,10 +10,8 @@ class DetailPage:AppCompatActivity () {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-       // getActionBar()?.setDisplayHomeAsUpEnabled(true)
-
+        assert(supportActionBar != null)   //null check
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         if (intent !== null) {
 
@@ -26,6 +24,10 @@ class DetailPage:AppCompatActivity () {
 
             }
         }
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
     }
 
