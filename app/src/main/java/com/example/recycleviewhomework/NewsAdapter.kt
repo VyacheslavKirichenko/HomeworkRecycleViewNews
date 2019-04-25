@@ -9,27 +9,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-class NewsAdapter(context: Context, emps: List<News>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsAdapter(context: Context, news: List<News>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var context: Context
     var news: List<News>
 
 
     init {
         this.context = context
-        this.news = emps
+        this.news = news
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(context)
-        return EmployeHolder(inflater.inflate(R.layout.second_layout, parent, false))
+        return NewsHolder(inflater.inflate(R.layout.recycle_item_layout, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val employe = news[position]
-        val eh = holder as EmployeHolder
-        eh.lbl_designation.setText(employe.Content)
-        eh.lbl_name.setText(employe.Title)
+        val newsInstance = news[position]
+        val eh = holder as NewsHolder
+        eh.to_lbl_context.setText(newsInstance.Content)
+        eh.to_lbl_title.setText(newsInstance.Title)
         eh.ClickItem((position).toString())
     }
 
@@ -37,14 +37,14 @@ class NewsAdapter(context: Context, emps: List<News>) : RecyclerView.Adapter<Rec
         return news.size
     }
 
-    internal class EmployeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    internal class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var lbl_name: TextView
-        var lbl_designation: TextView
+        var to_lbl_title: TextView
+        var to_lbl_context: TextView
 
         init {
-            lbl_name = itemView.findViewById(R.id.lbl_title) as TextView
-            lbl_designation = itemView.findViewById(R.id.lbl_context) as TextView
+            to_lbl_title = itemView.findViewById(R.id.lbl_title_detail) as TextView
+            to_lbl_context = itemView.findViewById(R.id.lbl_context_detail) as TextView
 
         }
         fun ClickItem(id: String) {

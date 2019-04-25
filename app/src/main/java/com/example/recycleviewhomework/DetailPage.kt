@@ -6,24 +6,25 @@ import kotlinx.android.synthetic.main.detail_activity.*
 
 
 class DetailPage:AppCompatActivity () {
-    var id = 0
+    var index = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+       // getActionBar()?.setDisplayHomeAsUpEnabled(true)
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.detail_activity)
 
-        getActionBar()?.setDisplayHomeAsUpEnabled(true)
+        if (intent !== null) {
 
-        var entries = MainActivity.resultNews
+            var id = intent.getStringExtra("id")
+            var news2 = MainActivity.resultNews[(id).toInt()]
+            if (news2 != null) {
+                index = (id).toInt()
+                lbl_title_detail.text = news2.Title
+                lbl_context_detail.text = news2.Content
 
-        if(intent.hasExtra("ID")){
-            id = intent.getIntExtra("ID",0)
-            lbl_title.text = entries[id].Title
-            lbl_context.text = entries[id].Content
+            }
         }
     }
     }
